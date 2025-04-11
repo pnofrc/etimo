@@ -1,0 +1,215 @@
+@font-face {
+    font-family: 'eurostile';
+    src: url('R41Eurostile-Bold.otf');
+}
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #fff;
+    overflow: hidden;
+    font-family: 'eurostile';
+        font-weight: bolder;
+}
+
+
+*{
+    font-size: 25px;
+
+}
+*::selection{
+    color: purple;
+}
+
+li,ul{
+    width: fit-content;
+    padding: unset;
+}
+ul{
+    max-width: 40%;
+}
+
+#buffer{
+    mix-blend-mode: difference;
+  color: white;
+    width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#buffer p{
+    font-size: 8rem;
+}
+
+.smaller{
+    width: min-content;
+}
+.smaller *{
+    font-size: 18px;
+}
+.flex{
+    display: flex;
+    justify-content: space-around;
+    width: inherit;
+}
+
+.centrino{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    position: absolute;
+    font-weight: bold;
+    z-index: 10;
+    overflow-y: scroll;
+    padding-bottom: 2rem;
+    display: block;
+  z-index: 101;
+
+}
+
+#info p{
+    cursor: pointer;
+}
+
+#info, #buffer span{
+    /* text-shadow: 0 0 10px rgba(0,0,0,0.5); */
+    mix-blend-mode: difference;
+    color: white;
+}
+
+#closeInfo, .close{
+    position: fixed;
+    bottom: 5vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    cursor: pointer;
+
+}
+
+#infoBox{
+    display: none;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background: white;
+}
+
+.header p{
+    /* width: 75%; */
+    padding: 0 1rem;
+}
+
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+
+.swiper-wrapper{
+    display: flex;
+align-items: center;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 90%;
+    overflow: hidden;
+
+    overflow: visible; 
+    transition: transform 0.3s ease;
+
+    backface-visibility: hidden;
+    transform-origin: center center;
+    /* perspective: 800px; */
+}
+
+.swiper-slide a{
+    width: auto;
+    height: auto;
+}
+
+video, img {
+    box-shadow: 0px -2px 13px 0px rgba(0,0,0,0.55);
+    -webkit-box-shadow: 0px -2px 13px 0px rgba(0,0,0,0.55);
+    -moz-box-shadow: 0px -2px 13px 0px rgba(0,0,0,0.55);
+    cursor: pointer;
+}
+
+.swiper-slide img,
+.swiper-slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;}
+
+.project-title {
+    display: none;
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    mix-blend-mode: difference;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    pointer-events: none;
+    text-align: center;
+}
+
+.gallery-view {
+    display: flex;
+    flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-swiper {
+    flex: 1;
+}
+
+.gallery-title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    position: fixed;
+    z-index: 100;
+  bottom: .5rem;
+}
+
+.title-project{
+    width: 70%;
+    text-align: center;
+}
+
+#infoProjectBox{
+    display: none;
+}
+
+#infoProjectBox p:nth-child(2){
+    overflow-y: scroll;
+  max-height: 65vh;
+}
+
+
+@media only screen and (min-width: 992px){
+    .swiper-slide {
+        width:40%;}
+}
