@@ -15,7 +15,9 @@
 
 </head>
 <body>
-    <div class="header" id="info"><p>Etimo [...] </p></div>
+    <div class="header" id="back"><a href="../"><p>Etimo [...]</p></a></div>
+
+    {{-- <div class="header" id="info"><p>Etimo [...] </p></div>
 
     <div id="infoBox" class="header">
         <p id="closeInfoFromTitle">Etimo [...]</p>
@@ -33,7 +35,7 @@
         </div>
 
         <span class="close" id="closeInfo">Close</span>
-    </div>
+    </div> --}}
 
     <div id="infoProjectBox" class="header">
         <p>{{ $project->title }}</p>
@@ -44,57 +46,55 @@
 
 
     <!-- GALLERY VIEW -->
-        <div class="gallery-view" id="gallery-{{ $project->id }}">
-            <div class="swiper gallerySwiper gallery-{{ $project->id }}">
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide">
-                        <video
-                            loop
-                            autoplay
-                            muted
-                        >
-                            <source src="/stream" type="video/mp4">
+    <div class="gallery-view" id="gallery">
+        <div class="swiper gallerySwiper gallery">
+            <div class="swiper-wrapper">
+    
+                @php
+                    $cover = $project->cover_image;
+                    $isVideo = in_array(strtolower(pathinfo($cover, PATHINFO_EXTENSION)), ['mp4', 'webm', 'mov']);
+                @endphp
+    
+                <div class="swiper-slide">
+                    @if ($isVideo)
+                        <video autoplay muted loop playsinline preload="metadata">
+                            <source src="{{ route('video.stream', ['project' => $project->slug, 'filename' => basename($cover)]) }}" type="video/mp4">
                         </video>
-                    </div>
-
+                    @else
+                        <img src="{{ asset('storage/' . $cover) }}" alt="{{ $project->title }}">
+                    @endif
+                </div>
+    
+                @foreach ($project->files as $file)
+                    @php
+                        $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                        $isVideo = in_array($ext, ['mp4', 'webm', 'mov']);
+                    @endphp
+    
                     <div class="swiper-slide">
-
-                        @if (str_ends_with($project->cover_image,"mp4" ))
-                            <video src="{{ asset('storage/' . $project->cover_image) }}" alt="{{ $project->title }}"></video>
-                        @else
-                            <img src="{{ asset('storage/' . $project->cover_image )}}" alt="{{ $project->title }}">
-                        @endif
-
-                    </div>
-                   
-
-                    @foreach ($project->files as $file)
-                        <div class="swiper-slide">
-
-                        @if (str_ends_with($file,"mp4" ))
-                            <video src="{{ asset('storage/' . $file) }}" alt="{{ $project->title }}"></video>
+                        @if ($isVideo)
+                            <video autoplay muted loop playsinline preload="metadata">
+                                <source src="{{ route('video.stream', ['project' => $project->slug, 'filename' => basename($file)]) }}" type="video/{{ $ext }}">
+                            </video>
                         @else
                             <img src="{{ asset('storage/' . $file) }}" alt="{{ $project->title }}">
                         @endif
-
-                        </div>
-                    @endforeach
-                </div>
+                    </div>
+                @endforeach
             </div>
-            <div id="bottom" class="gallery-title"><span></span><span class="title-project">{{ $project->title }}</span><span id="info-project">&#9432;</span></div>
         </div>
+    
+        <div id="bottom" class="gallery-title">
+            <span></span>
+            <span class="title-project">{{ $project->title }}</span>
+            <span id="info-project">&#9432;</span>
+        </div>
+    </div>
+    
 
     <!-- Swiper JS -->
     <script src="./swiper-bundle.min.js"></script>
+    <script src="project.js"></script>
     <script src="script.js"></script>
-    <script>
-        new Swiper(".gallery-{{ $project->id }}", {
-            direction: 'horizontal',
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-        });
-    </script>
 </body>
 </html>

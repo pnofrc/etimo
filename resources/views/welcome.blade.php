@@ -47,9 +47,8 @@
                     <a href="{{ route('projects.show', $project->slug) }}">
     
                         @if ($isVideo)
-                            <video muted loop playsinline>
-                                <source src="{{ route('video.stream', ['project' => $project->slug, 'filename' => basename($cover)]) }}" type="video/mp4">
-                            </video>
+                            <video muted loop playsinline  preload="metadata">
+                                <source src="{{ route('video.stream', ['project' => $project->slug, 'filename' => basename($cover)]) }}" type="video/mp4">                            </video>
                         @else
                             <img src="{{ asset('storage/' . $cover) }}" alt="{{ $project->title }}">
                         @endif
@@ -80,13 +79,24 @@
 
     <!-- Swiper JS -->
     <script src="./swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+
     <script>
+
+        let time
+        if(localStorage.getItem('accessed')){
+            time = 300
+        } else {
+            time = 2000
+            localStorage.setItem('accessed', "1")
+        }
+
         const swiper = new Swiper(".mainSwiper", {
             direction: "vertical",
             slidesPerView: 5,
             centeredSlides: true,
             // loop: true,
-            lazu: true,
+            lazy: true,
             spaceBetween: -200,
             mousewheel: true,
             grabCursor: true,
@@ -143,48 +153,49 @@
 
         let buffer = document.getElementById("buffer");
 
-window.onload = function () {
-    let x = 3;
+        window.onload = function () {
 
-    // Trigger the first dot immediately
-    document.getElementById(`dot${x}`).style.opacity = "1";
+            let x = 3;
 
-    // Start the animation loop
-    const intervalId = setInterval(() => {
-        // Reset all dots' opacity when needed
-        if (x === 4) {
-            x = 0;
-            document.querySelectorAll(`.dot`).forEach((element) => {
-                element.style.opacity = "0";
-            });
-        }
+            // Trigger the first dot immediately
+            document.getElementById(`dot${x}`).style.opacity = "1";
 
-        // Show the next dot
-        document.getElementById(`dot${x}`).style.opacity = "1";
-        x++;
-    }, 200);
+            // Start the animation loop
+            const intervalId = setInterval(() => {
+                // Reset all dots' opacity when needed
+                if (x === 4) {
+                    x = 0;
+                    document.querySelectorAll(`.dot`).forEach((element) => {
+                        element.style.opacity = "0";
+                    });
+                }
 
-    // Hide the buffer and show the main content after 2000ms
-    setTimeout(() => {
-        // Clear the animation interval to stop the loop
-        clearInterval(intervalId);
+                // Show the next dot
+                document.getElementById(`dot${x}`).style.opacity = "1";
+                x++;
+            }, 200);
 
-        buffer.style.display = "none";
+            
+            // Hide the buffer and show the main content after 2000ms
+            setTimeout(() => {
+                // Clear the animation interval to stop the loop
+                clearInterval(intervalId);
 
-        infoBtn.style.display = "block";
+                buffer.style.display = "none";
 
-        swiperArea.forEach((swiper) => {
-            swiper.style.filter = "unset";
-        });
+                infoBtn.style.display = "block";
 
-        // Call other functions
-        playVideo();
-        showTitle();
-    }, 2000);
-};
+                swiperArea.forEach((swiper) => {
+                    swiper.style.filter = "unset";
+                });
+
+                // Call other functions
+                playVideo();
+                showTitle();
+            }, time);
+        };
        
 
     </script>
-    <script src="script.js"></script>
 </body>
 </html>

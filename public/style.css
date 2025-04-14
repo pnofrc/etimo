@@ -11,16 +11,30 @@ html, body {
     background: #fff;
     overflow: hidden;
     font-family: 'eurostile';
-        font-weight: bolder;
+    font-weight: bolder;
+    transition: 1s ease;
 }
 
 
 *{
-    font-size: 25px;
-
+    font-size: 6.5vmin;
 }
+
 *::selection{
     color: purple;
+}
+
+#back{
+    cursor: pointer;
+    mix-blend-mode: difference;
+    color: white;
+}
+
+#back a{
+    text-decoration: none;
+    color: unset !important;
+    margin: 0;
+
 }
 
 li,ul{
@@ -45,6 +59,7 @@ ul{
 
 #buffer p{
     font-size: 8rem;
+    font-family: Arial;
 }
 
 .smaller{
@@ -73,6 +88,8 @@ ul{
     padding-bottom: 2rem;
     display: block;
   z-index: 101;
+  max-height: 70vh;
+  
 
 }
 
@@ -103,6 +120,9 @@ ul{
     height: 100vh;
     position: fixed;
     background: white;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0) 100%);
+    
 }
 
 .header p{
@@ -149,6 +169,10 @@ video, img {
     -webkit-box-shadow: 0px -2px 13px 0px rgba(0,0,0,0.55);
     -moz-box-shadow: 0px -2px 13px 0px rgba(0,0,0,0.55);
     cursor: pointer;
+}
+
+video{
+    pointer-events: none
 }
 
 .swiper-slide img,
@@ -199,17 +223,30 @@ video, img {
     text-align: center;
 }
 
+#info-project{
+    font-size: 10vmin;
+}
+
 #infoProjectBox{
     display: none;
 }
 
 #infoProjectBox p:nth-child(2){
     overflow-y: scroll;
-  max-height: 65vh;
-}
+    max-height: 75vh;}
 
 
 @media only screen and (min-width: 992px){
+
+    *{
+        font-size: 7.5vmin;
+        line-height: 1;
+    }
+
     .swiper-slide {
         width:40%;}
+
+        #buffer p{
+            font-size: 10em;
+        }
 }
