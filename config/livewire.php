@@ -67,7 +67,7 @@ return [
         'disk' => null,        // Example: 'local', 's3'              | Default: 'default'
         'directory' => null,   // Example: 'tmp'                      | Default: 'livewire-tmp'
         'middleware' => null,  // Example: 'throttle:5,1'      
-        'rules' => ['max:2097152'],       
+        'rules' => ['file|max:2097152'],       
         'preview_mimes' => [   // Supported file types for temporary pre-signed file URLs...
             'png', 'gif', 'bmp', 'svg', 'wav', 'mp4',
             'mov', 'avi', 'wmv', 'mp3', 'm4a',

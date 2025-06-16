@@ -66,7 +66,7 @@ class ProjectResource extends Resource
                 ])->required(),
                 Forms\Components\RichEditor::make("description")->label('Description')->required(),
                 Forms\Components\FileUpload::make("cover_image")->label('Cover')->required(),
-                Forms\Components\FileUpload::make("files")->label('Assets')->multiple()->reorderable()->required(),
+                Forms\Components\FileUpload::make("files")->label('Assets')->multiple()->reorderable() ->maxSize(2097152)->required(),
             ]);
     }
 
