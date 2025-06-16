@@ -11,32 +11,31 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
+
+@font-face {
+    font-family: 'eurostile';
+    src: url('R41Eurostile-Bold.otf');
+}
+
             body,html{
-                width: 100vw;
+                width: 100%;
                 height: 100vh;
                 margin: 0;
                 padding: 0;
                 display: flex;
-                align-content: center;
+                align-items: center;
                 justify-content: center;
-                background-image: url('https://png.pngtree.com/png-clipart/20221020/original/pngtree-many-error-messages-computer-window-png-image_8707444.png') ;
-                background-position: center center;
-            }
+                
+                    }
 
             span{
-                background:
-                black;
-                font-size: 38.5rem;
-                mix-blend-mode: difference;
-                color: white;
-                border:
-                solid 10px red;
-                width: 100%;
+                font-size: 7vmin;
+                font-family: 'eurostile';
                 text-align: center
             }
         </style>
     </head>
     <body>
-        <span>404</span>
+        <span>404 [Page Not Found]</span>
     </body>
 </html>

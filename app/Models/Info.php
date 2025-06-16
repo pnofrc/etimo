@@ -9,5 +9,5 @@ class Info extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['header','info','clients','services'];
+    protected $fillable = ['info','clients','services'];
 }

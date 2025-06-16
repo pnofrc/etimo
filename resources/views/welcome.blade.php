@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./swiper-bundle.min.css" />
     <link rel="stylesheet" href="./style.css">
+     <!-- Swiper JS -->
+     <script src="./swiper-bundle.min.js" ></script>
+
     <style>
         #info{
             display: none;
@@ -25,7 +28,7 @@
     <div id="buffer">
         <p>[</p><p id="dot0" class="dot"></p><p class="dot" id="dot1">.</p><p class="dot" id="dot2">.</p><p id="dot3" class="dot">.</p><p>]</p>
     </div>
-    <div class="header" id="info"><p>{{ $info->header }}</p></div>
+    <div class="header" id="info"><p>Etimo [<span id="film" class="categories">Film</span>, <span class="categories" id="photo">Photography</span>, <span class="categories" id="prod">Productions</span>, Etc.]</p></div>
 
     <div id="infoBox" class="header">
         <p>{{ $info->header }}</p>
@@ -43,8 +46,8 @@
                     $isVideo = in_array(strtolower(pathinfo($cover, PATHINFO_EXTENSION)), ['mp4', 'webm', 'mov']);
                 @endphp
     
-                <div class="swiper-slide">
-                    <a href="{{ route('projects.show', $project->slug) }}">
+                <div class="swiper-slide" >
+                    <a data-category="{{$project->category}}" href="{{ route('projects.show', $project->slug) }}">
     
                         @if ($isVideo)
                             <video muted loop playsinline  preload="metadata">
@@ -77,8 +80,7 @@
         </div>
     @endforeach
 
-    <!-- Swiper JS -->
-    <script src="./swiper-bundle.min.js"></script>
+   
     <script src="script.js"></script>
 
     <script>
@@ -95,8 +97,7 @@
             direction: "vertical",
             slidesPerView: 5,
             centeredSlides: true,
-            // loop: true,
-            lazy: true,
+            // lazy: true,
             spaceBetween: -200,
             mousewheel: true,
             grabCursor: true,
@@ -105,7 +106,7 @@
              
                 slideChange(){
                     playVideo()
-                    showTitle()
+                    showTitleAndCategory()
                 },
                 
                 setTranslate() {
@@ -131,11 +132,19 @@
             }
         });
 
-        function showTitle(){
+
+        function showTitleAndCategory(){
             document.querySelectorAll('.project-title').forEach(title => {
                 title.style.display = 'none'
             });
+
+            document.querySelectorAll('.categories').forEach(category => {
+                category.style.fontStyle = 'unset'
+            });
+
             let current = document.querySelectorAll('.swiper-slide')[swiper.activeIndex].firstElementChild
+            let category = current.getAttribute("data-category");
+            document.getElementById(category).style.fontStyle = 'italic'
             current.querySelector('div').style.display = 'block'
         }
 
@@ -191,7 +200,7 @@
 
                 // Call other functions
                 playVideo();
-                showTitle();
+                showTitleAndCategory();
             }, time);
         };
        

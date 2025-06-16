@@ -25,7 +25,7 @@ class InfoResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make("header")->label('Header')->required(),
+                // Forms\Components\TextInput::make("header")->label('Header')->required(),
                 Forms\Components\RichEditor::make("info")->label('Info')->required(),
                 Forms\Components\RichEditor::make("clients")->label('Clients')->required(),
                 Forms\Components\RichEditor::make("services")->label('Services')->required(),
@@ -36,7 +36,7 @@ class InfoResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('header')->label('Info Edits here'),
+                TextColumn::make('info')->label('Info Edits here'),
             ])
             ->filters([
                 //

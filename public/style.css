@@ -171,6 +171,13 @@ video, img {
     cursor: pointer;
 }
 
+.swiper-slide img, .swiper-slide video{
+    box-shadow: unset;
+    -webkit-box-shadow:unset;
+    -moz-box-shadow:unset;
+    cursor: unset;
+}
+
 video{
     pointer-events: none
 }
@@ -225,6 +232,8 @@ video{
 
 #info-project{
     font-size: 10vmin;
+    cursor: pointer;
+
 }
 
 #infoProjectBox{

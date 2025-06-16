@@ -3,6 +3,8 @@ let swu = new Swiper(".gallery", {
   slidesPerView: 1,
   spaceBetween: 20,
   loop: true,
+  mousewheel: true,
+  grabCursor: true,       
   on: {
    slideChange(){
       document.querySelectorAll('video').forEach(video => {

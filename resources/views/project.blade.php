@@ -50,20 +50,7 @@
         <div class="swiper gallerySwiper gallery">
             <div class="swiper-wrapper">
     
-                @php
-                    $cover = $project->cover_image;
-                    $isVideo = in_array(strtolower(pathinfo($cover, PATHINFO_EXTENSION)), ['mp4', 'webm', 'mov']);
-                @endphp
-    
-                <div class="swiper-slide">
-                    @if ($isVideo)
-                        <video autoplay muted loop playsinline preload="metadata">
-                            <source src="{{ route('video.stream', ['project' => $project->slug, 'filename' => basename($cover)]) }}" type="video/mp4">
-                        </video>
-                    @else
-                        <img src="{{ asset('storage/' . $cover) }}" alt="{{ $project->title }}">
-                    @endif
-                </div>
+               
     
                 @foreach ($project->files as $file)
                     @php

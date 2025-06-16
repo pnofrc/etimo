@@ -59,6 +59,11 @@ class ProjectResource extends Resource
                 ->debounce()
                 ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
                 Forms\Components\TextInput::make("slug")->label('Permalink')->required(),
+                Forms\Components\Select::make("category")->label('Category')->options([
+                    'photo' => 'Photography',
+                    'film' => 'Film',
+                    'prod' => 'Production',
+                ])->required(),
                 Forms\Components\RichEditor::make("description")->label('Description')->required(),
                 Forms\Components\FileUpload::make("cover_image")->label('Cover')->required(),
                 Forms\Components\FileUpload::make("files")->label('Assets')->multiple()->reorderable()->required(),
