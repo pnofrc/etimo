@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Filament\Resources;
-
+use Illuminate\Support\Facades\Storage;
 use App\Filament\Resources\ProjectResource\Pages;
 use App\Filament\Resources\ProjectResource\RelationManagers;
 use App\Models\Project;
@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Str;
-use App\Jobs\makeVideoStreaming;
 
 class ProjectResource extends Resource
 {
@@ -67,6 +66,20 @@ class ProjectResource extends Resource
                 Forms\Components\RichEditor::make("description")->label('Description')->required(),
                 Forms\Components\FileUpload::make("cover_image")->label('Cover')->required(),
                 Forms\Components\FileUpload::make("files")->label('Assets')->multiple()->reorderable() ->maxSize(2097152)->required(),
+
+                Forms\Components\Select::make('file_path')
+                    ->label('Seleziona file esistente')
+                    ->options(function () {
+                        // Leggi i file dalla tua cartella
+                        $files = Storage::disk('local')->files('./public');
+                        
+                        // Mappa path => nome leggibile
+                        return collect($files)->mapWithKeys(function ($file) {
+                            return [$file => basename($file)];
+                        })->toArray();
+                    })
+                    ->searchable()
+                    ->required()
             ]);
     }
 

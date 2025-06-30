@@ -49,9 +49,46 @@
     <div class="gallery-view" id="gallery">
         <div class="swiper gallerySwiper gallery">
             <div class="swiper-wrapper">
-    
-               
-    
+
+                {{-- PRIMO FILE: file_path --}}
+                @if ($project->file_path)
+                    @php
+                        $ext = strtolower(pathinfo($project->file_path, PATHINFO_EXTENSION));
+                    @endphp
+
+                    <div class="swiper-slide">
+                            <video autoplay muted loop playsinline preload="metadata">
+                                <source src="{{ route('video.stream', ['project' => $project->slug, 'filename' => basename($project->file_path)]) }}" type="video/{{ $ext }}">
+                            </video>
+                    </div>
+                @endif
+
+                {{-- ALTRI FILE --}}
+                @foreach ($project->files as $file)
+                    @php
+                        $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                        $isVideo = in_array($ext, ['mp4', 'webm', 'mov']);
+                    @endphp
+
+                    <div class="swiper-slide">
+                        @if ($isVideo)
+                            <video autoplay muted loop playsinline preload="metadata">
+                                <source src="{{ route('video.stream', ['project' => $project->slug, 'filename' => basename($file)]) }}" type="video/{{ $ext }}">
+                            </video>
+                        @else
+                            <img src="{{ asset('storage/' . $file) }}" alt="{{ $project->title }}">
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+
+{{-- 
+<div class="swiper-wrapper">
+
+                @php
+                    Storage::disk('local')->url($project->file_path);
+                @endphp
+
                 @foreach ($project->files as $file)
                     @php
                         $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
@@ -70,7 +107,7 @@
                 @endforeach
             </div>
         </div>
-    
+     --}}
         <div id="bottom" class="gallery-title">
             <span></span>
             <span class="title-project">{{ $project->title }}</span>

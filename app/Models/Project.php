@@ -10,7 +10,7 @@ class Project extends Model
     use HasFactory;
 
 
-    protected $fillable = ['title', 'description', 'files', 'cover_image', 'slug', 'category'];
+    protected $fillable = ['title', 'description', 'files', 'cover_image', 'slug', 'category','file_path'];
 
     protected $casts = [
         'files' => 'array',
