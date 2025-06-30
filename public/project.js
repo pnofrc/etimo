@@ -8,7 +8,7 @@ let swu = new Swiper(".gallery", {
   spaceBetween: 20,
   loop: true,
   mousewheel: true,
-  grabCursor: true,       
+//   grabCursor: true,       
   on: {
    slideChange(){
       document.querySelectorAll('video').forEach(video => {
