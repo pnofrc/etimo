@@ -57,7 +57,7 @@
                     @endphp
 
                     <div class="swiper-slide">
-                            <video autoplay muted loop playsinline preload="metadata">
+                            <video controls playsinline preload="metadata">
                                 <source src="{{ route('video.stream', ['project' => $project->slug, 'filename' => basename($project->file_path)]) }}" type="video/{{ $ext }}">
                             </video>
                     </div>

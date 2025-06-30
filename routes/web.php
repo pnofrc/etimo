@@ -25,18 +25,6 @@ Route::get('/', function () {
 
 
 
-// Route::get('/stream/{vid_id}', function (Project $project) {
-
-//     $file =  Storage::disk('public')->path('01JRGWB4P8W72A8W72YQW0GJ1W.mp4');
-
-//     $stream = new VideoStream($file);
-
-//     return response()->stream(function () use ($stream) {
-//         $stream->start();
-//     });
-
-// });
-
 
 Route::get('/stream/{project}/{filename}', function (Project $project, $filename) {
 
@@ -46,7 +34,6 @@ Route::get('/stream/{project}/{filename}', function (Project $project, $filename
 
     if (!$matchedFile) {
         $matchedFile = str_replace("public/","",$project->file_path);
-
     }
 
     if (!$matchedFile) {
