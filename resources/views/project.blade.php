@@ -6,8 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./swiper-bundle.min.css" />
     <link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
 
     <style>
+
+        :root{
+            --plyr-color-main: black;
+        }
         .swiper{
             height: 75%;
         }
@@ -57,7 +63,7 @@
                     @endphp
 
                     <div class="swiper-slide">
-                            <video controls playsinline preload="metadata">
+                            <video class="player" controls playsinline preload="metadata">
                                 <source src="{{ route('video.stream', ['project' => $project->slug, 'filename' => basename($project->file_path)]) }}" type="video/{{ $ext }}">
                             </video>
                     </div>

@@ -1,3 +1,7 @@
+const players = Plyr.setup('.player', {
+    controls: ['play', 'progress', 'mute', 'fullscreen'],
+});
+
 let swu = new Swiper(".gallery", {
   direction: 'horizontal',
   slidesPerView: 1,
@@ -10,7 +14,6 @@ let swu = new Swiper(".gallery", {
       document.querySelectorAll('video').forEach(video => {
               video.pause()
           });
-          console.log()
       let current = document.querySelectorAll('.swiper-slide')[this.activeIndex].firstElementChild
   
       if (current.nodeName == 'VIDEO'){
