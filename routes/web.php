@@ -46,7 +46,6 @@ Route::get('/stream/{project}/{filename}', function (Project $project, $filename
 
     if (!$matchedFile) {
         $matchedFile = $project->file_path;
-        dd($matchedFile);
     }
 
     if (!$matchedFile) {
