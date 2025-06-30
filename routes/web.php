@@ -45,6 +45,10 @@ Route::get('/stream/{project}/{filename}', function (Project $project, $filename
     });
 
     if (!$matchedFile) {
+        $matchedFile = $project->file_path;
+    }
+
+    if (!$matchedFile) {
         $cover = $project->cover_image;
         $coverExt = strtolower(pathinfo($cover, PATHINFO_EXTENSION));
         if (in_array($coverExt, ['mp4', 'webm', 'mov', 'avi']) && basename($cover) === $filename) {
@@ -53,8 +57,6 @@ Route::get('/stream/{project}/{filename}', function (Project $project, $filename
     }
 
     if (!$matchedFile) {
-        $matchedFile = $project->file_path;
-        
         if (!$matchedFile || basename($matchedFile) !== $filename) {
             abort(404, 'Video non trovato.');
         }
