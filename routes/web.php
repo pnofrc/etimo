@@ -53,7 +53,11 @@ Route::get('/stream/{project}/{filename}', function (Project $project, $filename
     }
 
     if (!$matchedFile) {
-        abort(404, 'Video non trovato.');
+        $matchedFile = $project->file_path;
+        
+        if (!$matchedFile || basename($matchedFile) !== $filename) {
+            abort(404, 'Video non trovato.');
+        }
     }
 
     $path = Storage::disk('public')->path($matchedFile);
@@ -68,6 +72,7 @@ Route::get('/stream/{project}/{filename}', function (Project $project, $filename
         $stream->start();
     });
 })->where('filename', '.*')->name('video.stream');
+
 
 
 
