@@ -1,4 +1,4 @@
-const infoBtn = document.getElementById("info");
+// const infoBtn = document.getElementById("info");
 const backBtn = document.getElementById("back");
 const closeInfoBtn = document.getElementById("closeInfo");
 const closeInfoBtnTitle = document.getElementById("closeInfoFromTitle");
@@ -23,35 +23,35 @@ function blurSwipers(blur) {
   });
 }
 
-let infoOpen = false;
-if (infoBtn){
-  infoBtn.addEventListener("click", () => {
-    infoOpen = !infoOpen;
-    toggleElement(infoBox, infoOpen);
-    infoBtn.style.display = infoOpen ? "none" : "block";
-    blurSwipers(infoOpen);
-  });
-}
+// let infoOpen = false;
+// if (infoBtn){
+//   infoBtn.addEventListener("click", () => {
+//     infoOpen = !infoOpen;
+//     toggleElement(infoBox, infoOpen);
+//     infoBtn.style.display = infoOpen ? "none" : "block";
+//     blurSwipers(infoOpen);
+//   });
+// }
 
-if (closeInfoBtnTitle){
+// if (closeInfoBtnTitle){
 
-    closeInfoBtnTitle.addEventListener("click", () => {
-        infoOpen = false;
-        toggleElement(infoBox, false);
-        infoBtn.style.display = "block";
-        blurSwipers(false);
-      });
-}
+//     closeInfoBtnTitle.addEventListener("click", () => {
+//         infoOpen = false;
+//         toggleElement(infoBox, false);
+//         infoBtn.style.display = "block";
+//         blurSwipers(false);
+//       });
+// }
 
 
-if (closeInfoBtn){
-closeInfoBtn.addEventListener("click", () => {
-  infoOpen = false;
-  toggleElement(infoBox, false);
-  infoBtn.style.display = "block";
-  blurSwipers(false);
-});
-}
+// if (closeInfoBtn){
+// closeInfoBtn.addEventListener("click", () => {
+//   infoOpen = false;
+//   toggleElement(infoBox, false);
+//   infoBtn.style.display = "block";
+//   blurSwipers(false);
+// });
+// }
 
 if (projectBtn){
     let projectOpen = false;

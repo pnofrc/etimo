@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('welcome', compact('info','projects'));
 });
 
+Route::get('/about', function () {
+ $info = Info::first();
+     return view('about', compact('info',));
+});
 
 
 

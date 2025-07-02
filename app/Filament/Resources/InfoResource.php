@@ -27,8 +27,10 @@ class InfoResource extends Resource
             ->schema([
                 // Forms\Components\TextInput::make("header")->label('Header')->required(),
                 Forms\Components\RichEditor::make("info")->label('Info')->required(),
-                Forms\Components\RichEditor::make("clients")->label('Clients')->required(),
-                Forms\Components\RichEditor::make("services")->label('Services')->required(),
+                Forms\Components\Textarea::make("clients")->label('Clients')->required(),
+                Forms\Components\Textarea::make("services")->label('Services')->required(),
+                Forms\Components\RichEditor::make("contact")->label('Contacts')->required(),
+
             ]);
     }
 

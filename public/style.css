@@ -9,7 +9,7 @@ html, body {
     padding: 0;
     height: 100%;
     background: #fff;
-    overflow: hidden;
+    /* overflow: hidden; */
     font-family: 'eurostile';
     font-weight: bolder;
     transition: 1s ease;
@@ -17,23 +17,33 @@ html, body {
 
 
 *{
-    font-size: 6.5vmin;
+    font-size: 2.2rem;
 }
 
 *::selection{
     color: purple;
 }
 
+.get-back{
+    color: black !important;
+    text-decoration: none;
+        z-index: 999;
+}
+
+
 #back{
+
     cursor: pointer;
     mix-blend-mode: difference;
     color: white;
 }
 
 #back a{
+    z-index: 999;
     text-decoration: none;
     color: unset !important;
     margin: 0;
+    width: fit-content;
 
 }
 
@@ -85,23 +95,31 @@ ul{
     font-weight: bold;
     z-index: 10;
     overflow-y: scroll;
-    padding-bottom: 2rem;
-    display: block;
-  z-index: 101;
-  max-height: 70vh;
-  
+    display: flex;
+    z-index: 1001;
+    align-items: center;
+    /* max-height: 70vh; */
+   
+    width: 96%;
+    left: 3%; top: 3%;
 
 }
 
-#info p{
-    cursor: pointer;
+.infos{
+    position: relative;
+    width: 98%; left: 1%; top: -15%
 }
 
-#info, #buffer span{
-    /* text-shadow: 0 0 10px rgba(0,0,0,0.5); */
-    mix-blend-mode: difference;
-    color: white;
-}
+.about{
+    position: absolute;
+  bottom: 2%;
+  left: 2%;
+ cursor: pointer;
+z-index: 999;
+color: black !important;
+text-decoration: none;}
+
+
 
 #closeInfo, .close{
     position: fixed;
@@ -127,15 +145,19 @@ ul{
 
 .header p{
     /* width: 75%; */
-    padding: 0 1rem;
+    /* padding: 0 1rem; */
+    margin: unset
 }
 
 
 
 .swiper {
-    width: 100%;
+    width: 98%;
     height: 100%;
 }
+
+    .swiper-slide {
+        width:35%;}
 
 
 .swiper-wrapper{
@@ -148,9 +170,9 @@ align-items: center;
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 90%;
+    /* width: 90%; */
     overflow: hidden;
-
+ box-sizing: border-box;
     overflow: visible; 
     transition: transform 0.3s ease;
 
@@ -188,6 +210,13 @@ video{
     height: 100%;
     object-fit: contain;}
 
+    .invert{
+       color: white;
+        mix-blend-mode: difference;
+        
+    }
+
+
 .project-title {
     display: none;
     position: absolute;
@@ -215,7 +244,7 @@ video{
     flex: 1;
 }
 
-.gallery-title {
+/* .gallery-title {
     display: flex;
     align-items: center;
     width: 100%;
@@ -223,37 +252,40 @@ video{
     position: fixed;
     z-index: 100;
   bottom: .5rem;
-}
+} */
 
 .title-project{
-    width: 70%;
-    text-align: center;
+   width: 100%;
+  text-align: center;
+  z-index: 998;
+  position: absolute;
 }
 
 #info-project{
-    font-size: 10vmin;
+    font-size: 1rem;
     cursor: pointer;
 
 }
 
-#infoProjectBox{
-    display: none;
+#infoProjectBox p{
+   width: 88%;
+   margin-left: 6%;
 }
 
-#infoProjectBox p:nth-child(2){
+/* #infoProjectBox p:nth-child(2){
     overflow-y: scroll;
-    max-height: 75vh;}
+    max-height: 75vh;} */
 
 
-@media only screen and (min-width: 992px){
+@media only screen and (max-width: 992px){
 
     *{
-        font-size: 7.5vmin;
-        line-height: 1;
+        font-size: 1.3rem;
+        line-height: 1.1;
     }
 
     .swiper-slide {
-        width:40%;}
+        width:95%;}
 
         #buffer p{
             font-size: 10em;

@@ -28,14 +28,12 @@
     <div id="buffer">
         <p>[</p><p id="dot0" class="dot"></p><p class="dot" id="dot1">.</p><p class="dot" id="dot2">.</p><p id="dot3" class="dot">.</p><p>]</p>
     </div>
-    <div class="header" id="info"><p>Etimo [<span id="film" class="categories">Film</span>, <span class="categories" id="photo">Photography</span>, <span class="categories" id="prod">Productions</span>, Etc.]</p></div>
 
-    <div id="infoBox" class="header">
-        <p>{{ $info->header }}</p>
-        {!! $info->info !!}
 
-        <span id="closeInfo">Close</span>
-    </div>
+    <div class="header invert"><p>Etimo [<span id="film" class="categories">Film</span>, <span class="categories" id="photo">Photography</span>, <span class="categories" id="prod">Services</span>, Etc.]</p></div>
+
+    <a href="/about" class="about">About</a>
+   
 
     <!-- MAIN SWIPER VIEW -->
     <div class="swiper mainSwiper">
@@ -63,23 +61,6 @@
         </div>
     </div>
     
-
-    <!-- GALLERY VIEW -->
-    @foreach ($projects as $project)
-        <div class="gallery-view" id="gallery-{{ $project->id }}">
-            <div class="swiper gallerySwiper gallery-{{ $project->id }}">
-                <div class="swiper-wrapper">
-                    @foreach ($project->files as $file)
-                        <div class="swiper-slide">
-                            <img src="{{ asset('storage/' . $file) }}" style="width: 100%; height: 100%; object-fit: cover;" />
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-            {{-- <div class="gallery-title"><p>{{ $project->title }}</p></div> --}}
-        </div>
-    @endforeach
-
    
     <script src="script.js"></script>
 
@@ -192,7 +173,7 @@
 
                 buffer.style.display = "none";
 
-                infoBtn.style.display = "block";
+                // infoBtn.style.display = "block";
 
                 swiperArea.forEach((swiper) => {
                     swiper.style.filter = "unset";

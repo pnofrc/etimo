@@ -61,11 +61,11 @@ class ProjectResource extends Resource
                 Forms\Components\Select::make("category")->label('Category')->options([
                     'photo' => 'Photography',
                     'film' => 'Film',
-                    'prod' => 'Production',
+                    'prod' => 'Services',
                 ])->required(),
                 Forms\Components\RichEditor::make("description")->label('Description')->required(),
                 Forms\Components\FileUpload::make("cover_image")->label('Cover')->required(),
-                Forms\Components\FileUpload::make("files")->label('Assets')->multiple()->reorderable() ->maxSize(2097152)->required(),
+                Forms\Components\FileUpload::make("files")->label('Assets')->multiple()->reorderable()->maxSize(2097152),
 
                 Forms\Components\Select::make('file_path')
                     ->label('Seleziona file esistente')
@@ -79,7 +79,7 @@ class ProjectResource extends Resource
                         })->toArray();
                     })
                     ->searchable()
-                    ->required()
+             
             ]);
     }
 
