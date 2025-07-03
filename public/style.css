@@ -247,8 +247,8 @@ video{
   top: 1rem;
   position: relative;
 
-    height: 60vh;
-  margin: 20vh 0;
+    /* height: 60vh; */
+  /* margin: 20vh 0; */
 }
 
 .gallery-swiper {
@@ -304,13 +304,20 @@ video{
     }
 
     .gallery-view{
-        top: unset;
+        /* top: unset;
         height: 60vh;
-        margin: 3vh 0;}
+        margin: 3vh 0;
+    } */
+     height: 70vh;}
+
     .swiper-slide {
         width:95%;}
 
         #buffer p{
             font-size: 10em;
+        }
+
+        .infos{
+            top: -10vh
         }
 }
