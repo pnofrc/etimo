@@ -241,10 +241,14 @@ video{
     display: flex;
     flex-direction: column;
   height: 95vh;
+ 
   align-items: center;
   justify-content: center;
   top: 1rem;
   position: relative;
+
+    height: 60vh;
+  margin: 20vh 0;
 }
 
 .gallery-swiper {
