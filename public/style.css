@@ -18,11 +18,17 @@ html, body {
 
 *{
     font-size: 2.2rem;
+    line-height: 1;
 }
 
 *::selection{
     color: purple;
 }
+
+.mobile{
+            display: none;
+        }
+
 
 .get-back{
     color: black !important;
@@ -98,7 +104,8 @@ ul{
     display: flex;
     z-index: 1001;
     align-items: center;
-    /* max-height: 70vh; */
+   overflow-y: hidden;
+
    
     width: 96%;
     left: 3%; top: 3%;
@@ -235,9 +242,11 @@ video{
 .gallery-view {
     display: flex;
     flex-direction: column;
-  height: 100vh;
+  height: 95vh;
   align-items: center;
   justify-content: center;
+  top: 1rem;
+  position: relative;
 }
 
 .gallery-swiper {
@@ -270,6 +279,7 @@ video{
 #infoProjectBox p{
    width: 88%;
    margin-left: 6%;
+   padding-bottom: 2rem
 }
 
 /* #infoProjectBox p:nth-child(2){
@@ -279,11 +289,24 @@ video{
 
 @media only screen and (max-width: 992px){
 
+
+            .desktop{
+                display: none;
+            }
+            .mobile{
+                display: block;
+                margin-top: 3rem
+            }
+
     *{
         font-size: 1.3rem;
         line-height: 1.1;
     }
 
+    .gallery-view{
+        height: 90vh;
+        top: unset
+    }
     .swiper-slide {
         width:95%;}
 

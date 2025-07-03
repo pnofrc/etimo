@@ -23,12 +23,12 @@
 <body>
     <div class="header" id="back">
         <a class="get-back" href="../">Etimo [...]</a>
-        <span class="title-project invert">{{ $project->title }}</span>
+        <span class="title-project invert desktop">{{ $project->title }}</span>
        <p></p>
 
        </div>
 
-
+    <span class="title-project invert mobile">{{ $project->title }}</span>
 
     <!-- GALLERY VIEW -->
     <div class="gallery-view" id="gallery">

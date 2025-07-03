@@ -38,12 +38,15 @@
             top: 3%;
         }
 
+        
 
         @media only screen and (max-width: 992px){
             #content{
                 margin: 12% 3%
             }
+
         }
+
     </style>
 </head>
 <body>

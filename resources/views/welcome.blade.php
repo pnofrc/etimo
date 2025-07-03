@@ -182,7 +182,7 @@
                 // Call other functions
                 playVideo();
                 showTitleAndCategory();
-            }, time);
+            }, 2000);
         };
        
 
