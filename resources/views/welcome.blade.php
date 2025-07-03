@@ -68,7 +68,7 @@
 
         let time
         if(localStorage.getItem('accessed')){
-            time = 300
+            time = 1000
         } else {
             time = 2000
             localStorage.setItem('accessed', "1")
@@ -182,7 +182,7 @@
                 // Call other functions
                 playVideo();
                 showTitleAndCategory();
-            }, 2000);
+            }, time);
         };
        
 

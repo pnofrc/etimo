@@ -25,9 +25,7 @@ html, body {
     color: purple;
 }
 
-.mobile{
-            display: none;
-        }
+
 
 
 .get-back{
@@ -282,11 +280,9 @@ video{
    padding-bottom: 2rem
 }
 
-/* #infoProjectBox p:nth-child(2){
-    overflow-y: scroll;
-    max-height: 75vh;} */
-
-
+.mobile{
+            display: none;
+        }
 @media only screen and (max-width: 992px){
 
 
