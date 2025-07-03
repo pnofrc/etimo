@@ -304,9 +304,9 @@ video{
     }
 
     .gallery-view{
-        height: 90vh;
-        top: unset
-    }
+        top: unset;
+        height: 60vh;
+        margin: 3vh 0;}
     .swiper-slide {
         width:95%;}
 
