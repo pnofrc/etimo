@@ -9,7 +9,7 @@
     <style>
 
         #content{
-            margin: 6%;
+            margin: 6% 10%;
         }
 
         a{
@@ -17,7 +17,7 @@
         }
 
         .footer{
-            font-size: .5em; padding-bottom: 1rem;
+            font-size: .5em; padding-bottom: 1rem; padding-top: 2.5rem;
         }
 
         .footer a{
@@ -25,7 +25,7 @@
         }
 
         .extra{
-            padding-left: 1rem; margin: unset
+            padding-left: 2.5rem; margin: unset
         }
 
         .title-info{
@@ -70,7 +70,7 @@
      
        
         
-        <p class="footer">© 2025 Etimo. All projects depicted on this website, unless otherwise stated, are property of Etimo. Website by Simone Spinazzè. Coding by <a href="http://computomanzia.link">Computomanzia - Federico Poni</a>.</p>
+        <p class="footer">© {{ now()->year }} Etimo. All projects depicted on this website, unless otherwise stated, are property of Etimo. Website by Simone Spinazzè. Coding by <a href="http://computomanzia.link">Computomanzia — Federico Poni</a>.</p>
 
     </div>
    

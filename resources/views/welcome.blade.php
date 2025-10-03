@@ -30,7 +30,7 @@
     </div>
 
 
-    <div class="header invert"><p>Etimo [<span id="film" class="categories">Film</span>, <span class="categories" id="photo">Photography</span>, <span class="categories" id="prod">Services</span>, Etc.]</p></div>
+    <div class="header invert"><p><span style="margin-right: 32px">Etimo</span>[<span id="film" class="categories">Film</span>, <span class="categories" id="photo">Photography</span>, <span class="categories" id="prod">Services</span>, Etc.]</p></div>
 
     <a href="/about" class="about">About</a>
    
@@ -44,7 +44,7 @@
                     $isVideo = in_array(strtolower(pathinfo($cover, PATHINFO_EXTENSION)), ['mp4', 'webm', 'mov']);
                 @endphp
     
-                <div class="swiper-slide" >
+                <div class="swiper-slide" data-categoryFilter="{{$project->category}}">
                     <a data-category="{{$project->category}}" href="{{ route('projects.show', $project->slug) }}">
     
                         @if ($isVideo)
@@ -183,7 +183,41 @@
                 playVideo();
                 showTitleAndCategory();
             }, time);
-        };
+
+        // Filtering from tags
+
+        let categories = document.querySelectorAll(".categories");
+
+categories.forEach(category => {
+    category.addEventListener("click", () => {
+        let selectedCategory = category.id;
+
+        document.querySelectorAll('.swiper-slide').forEach(element => {
+            if (element.getAttribute("data-categoryFilter") !== selectedCategory) {
+                // Se la categoria non corrisponde, nascondi lo slide
+                element.style.display = 'none';
+            } else {
+                // Se la categoria corrisponde, mostra lo slide
+                element.style.display = 'block';
+            }
+        });
+
+        // Dopo aver nascosto/mostrato gli slide, aggiorna Swiper per ricalcolare il layout
+        swiper.update();
+        
+        // Per tornare al primo slide dopo il filtro (opzionale)
+        swiper.slideTo(0);
+        
+        // Esegui di nuovo le funzioni per mostrare titolo e video
+        setTimeout(() => {
+            playVideo();
+            showTitleAndCategory();
+        }, 100);
+        
+    });
+});
+        }
+
        
 
     </script>

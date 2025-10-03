@@ -11,14 +11,13 @@ html, body {
     background: #fff;
     /* overflow: hidden; */
     font-family: 'eurostile';
-    font-weight: bolder;
     transition: 1s ease;
 }
 
 
 *{
     font-size: 2.2rem;
-    line-height: 1;
+    line-height: 1.1;
 }
 
 *::selection{
@@ -103,11 +102,15 @@ ul{
     z-index: 1001;
     align-items: center;
    overflow-y: hidden;
-
+    margin: 35px;
    
-    width: 96%;
-    left: 3%; top: 3%;
+    width: calc(100% - 35px);
+    /* left: 3%; top: 3%; */
 
+}
+
+.header p{
+    padding-bottom: 15px;
 }
 
 .infos{
@@ -117,8 +120,8 @@ ul{
 
 .about{
     position: absolute;
-  bottom: 2%;
-  left: 2%;
+  bottom: 0;
+  margin: 35px;
  cursor: pointer;
 z-index: 999;
 color: black !important;
@@ -227,7 +230,7 @@ video{
     position: absolute;
     color: white;
     font-weight: bold;
-    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    /* text-shadow: 0 0 10px rgba(0,0,0,0.5); */
     mix-blend-mode: difference;
     top: 50%;
     left: 50%;
@@ -300,7 +303,6 @@ video{
 
     *{
         font-size: 1.3rem;
-        line-height: 1.1;
     }
 
     .gallery-view{
